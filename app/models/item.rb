@@ -19,7 +19,6 @@ class Item < ApplicationRecord
   validates :shipping_area_id, presence: true
   validates :shipping_day_id,  presence: true
   validates :price, presence: true, numericality: { in: 300..9_999_999 }
-  validates :price, format: { with: /\A[0-9]+\z/ }
   validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :delivery_charge_id, numericality: { other_than: 1, message: "can't be blank" }
