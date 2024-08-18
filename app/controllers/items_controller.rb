@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
-    # @items = Item.all  # 他実装でコメントイン
+    @items = Item.all
   end
 
   def new
