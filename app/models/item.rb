@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
   belongs_to :user
-  # has_one :purchase #商品 購入 機能のレビュー依頼時に、コメントインする
+  # has_one :purchase # 商品 購入 機能のレビュー依頼時に、コメントインする
   has_one_attached :image
 
   extend ActiveHash::Associations::ActiveRecordExtensions
