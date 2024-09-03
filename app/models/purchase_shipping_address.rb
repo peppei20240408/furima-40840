@@ -10,9 +10,7 @@ class PurchaseShippingAddress
   validates :shipping_area, numericality: { other_than: 1, message: "can't be blank" }
 
   def save
-    # 寄付情報を保存し、変数donationに代入する
     purchase = Purchase.create(user_id: user_id, item_id: item_id)
-
     ShippingAddress.create(postal_code:, shipping_area:, city:, address:, building_name:, phone_number:, purchase_id: purchase.id)
   end
 end
