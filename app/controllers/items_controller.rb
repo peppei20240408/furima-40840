@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
+    @purchase = PurchaseShippingAddress.new
     @items = Item.order('created_at DESC')
   end
 
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @purchase = PurchaseShippingAddress.new
   end
 
   def edit
