@@ -25,9 +25,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    return if current_user == @item.user
+    return unless @item.purchase.present? || current_user != @item.user
 
-    redirect_to action: :index
+    redirect_to root_path
   end
 
   def update
