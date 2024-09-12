@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
 
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
-    @item = Item.find(params[:item_id])
+    item_params
     @purchase_shipping_address = PurchaseShippingAddress.new
     return unless current_user.id == @item.user_id || @item.purchase.present?
 
@@ -11,7 +11,7 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
+    item_params
     @purchase_shipping_address = PurchaseShippingAddress.new(purchase_params)
     if @purchase_shipping_address.valid?
       pay_item
@@ -38,5 +38,9 @@ class PurchasesController < ApplicationController
       card: purchase_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def item_params
+    @item = Item.find(params[:item_id])
   end
 end
